@@ -63,9 +63,9 @@ wchar_t box_borders[3][4] =
 	L"╚═╝"
 };
 
-BOX	create_box( BOX_TYPE type, wchar_t* title, wchar_t** vert_fields, wchar_t** hor_fields,
-				BUTTON_TYPE* vert_type, BUTTON_TYPE* hor_type, int vert_size, int hor_size,
-				CURSOR vert_cursor, CURSOR hor_cursor, bool vert, int size_x, int size_y)
+BOX	create_box(BOX_TYPE type, wchar_t* title, wchar_t** vert_fields, wchar_t** hor_fields,
+	BUTTON_TYPE* vert_type, BUTTON_TYPE* hor_type, int vert_size, int hor_size,
+	CURSOR vert_cursor, CURSOR hor_cursor, bool vert, int size_x, int size_y)
 {
 	BOX box;
 
@@ -74,40 +74,40 @@ BOX	create_box( BOX_TYPE type, wchar_t* title, wchar_t** vert_fields, wchar_t** 
 	int i = 0;
 
 	for (int j = 0; j < 255; j++) box.title[j] = title[j];
-	
+
 	for (i = 0; i < vert_size; i++)
 	{
-		for (int j = 0; j<255; j++)
+		for (int j = 0; j < 255; j++)
 			box.vert_fields[i][j] = vert_fields[i][j];
 		box.vert_type[i] = vert_type[i];
 	}
-	
+
 	for (i = 0; i < hor_size; i++)
 	{
-		for (int j = 0; j<255;j++)
+		for (int j = 0; j < 255; j++)
 			box.hor_fields[i][j] = hor_fields[i][j];
 		box.hor_type[i] = hor_type[i];
 	}
-	
+
 	box.vert_size = vert_size;
-	box.hor_size  = hor_size;
-	   
+	box.hor_size = hor_size;
+
 	box.vert_cursor = vert_cursor;
-	box.hor_cursor  = hor_cursor;
-	   
+	box.hor_cursor = hor_cursor;
+
 	box.vert = vert;
-	   
+
 	box.size_x = size_x;
 	box.size_y = size_y;
-	
+
 	return box;
 }
 
-person*	make_person(char* other_first_name, char* other_second_name, Sign other_sign, int* other_date)
+person* make_person(char* other_first_name, char* other_second_name, Sign other_sign, int* other_date)
 {
 	person* tmp = new person;
 
-	init_str(tmp->first_name , other_first_name );
+	init_str(tmp->first_name, other_first_name);
 	init_str(tmp->second_name, other_second_name);
 
 	tmp->sign = other_sign;
@@ -115,41 +115,41 @@ person*	make_person(char* other_first_name, char* other_second_name, Sign other_
 	tmp->date = new int[3];
 	for (int i = 0; i < 3; i++)
 		tmp->date[i] = other_date[i];
-	
+
 	return tmp;
 }
 
-list**	find(list*& head, person* element)
+list** find(list*& head, person* element)
 {
 	if (!head)				  return nullptr;
 	if (head->val != element) return find(head->next, element);
 	return &head;
 }
 
-list**	find_by_sign(list*& head, Sign sign)
+list** find_by_sign(list*& head, Sign sign)
 {
 	if (!head)					 return nullptr;
 	if (head->val->sign != sign) return find_by_sign(head->next, sign);
 	return &head;
 }
 
-list**	find_by_name(list*& head, char* person_first_name, char* person_second_name)
+list** find_by_name(list*& head, char* person_first_name, char* person_second_name)
 {
 	if (!head) return nullptr;
-	if (head->val->first_name  != person_first_name &&
-		head->val->second_name != person_second_name  )
+	if (head->val->first_name != person_first_name &&
+		head->val->second_name != person_second_name)
 		return find_by_name(head->next, person_first_name, person_second_name);
 	return &head;
 }
 
 void	start_setings(OBJECT*& obj)
 {
-	obj        = new OBJECT;
+	obj = new OBJECT;
 	obj->state = State::MENU;
-			         
-	obj->l      = nullptr;
+
+	obj->l = nullptr;
 	load(obj->l);
-	obj->tmp    = nullptr;
+	obj->tmp = nullptr;
 	obj->cursor = obj->l;
 
 	obj->list_cursor = { 0, 0, min(size(obj->l),22) - 1 };
@@ -157,10 +157,10 @@ void	start_setings(OBJECT*& obj)
 
 	zero_person(obj);
 
-	obj->handle     = GetStdHandle(STD_OUTPUT_HANDLE);
+	obj->handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	standart_buff(obj);
-	obj->coord      = { 0, 0 };
-	obj->writeArea  = { 0, 0, 120, 30 };
+	obj->coord = { 0, 0 };
+	obj->writeArea = { 0, 0, 120, 30 };
 	obj->bufferSize = { 120, 30 };
 
 	obj->found = false;
@@ -187,7 +187,7 @@ void	standart_buff(OBJECT*& obj)
 	for (int i = 0; i < (30 * 120); ++i)
 	{
 		obj->buff[i].Char.UnicodeChar = arr[i / 120][i % 120];
-		obj->buff[i].Attributes       = val;
+		obj->buff[i].Attributes = val;
 	}
 
 	int dx = 27 * 120 + 102;
@@ -218,7 +218,7 @@ void	init_str(char*& str, char*& other_str)
 	}
 }
 
-void	rand_fill(list*& head,int size)
+void	rand_fill(list*& head, int size)
 {
 	if (size == 0) return;
 
@@ -229,10 +229,10 @@ void	rand_fill(list*& head,int size)
 	arr[1] = rand() % 12 + 1;
 	arr[2] = rand() % 2020 + 1;
 
-	char* first_name  = gen_name(10);
+	char* first_name = gen_name(10);
 	char* second_name = gen_name(10);
 
-	element = make_person( first_name, second_name, (Sign)(rand()%12), arr);
+	element = make_person(first_name, second_name, (Sign)(rand() % 12), arr);
 
 	delete[] first_name;
 	delete[] second_name;
@@ -244,9 +244,9 @@ void	rand_fill(list*& head,int size)
 
 void	del(OBJECT*& obj)
 {
-	
+
 	del(obj->l);
-	
+
 	while (obj->tmp)
 	{
 		list* tmp2 = obj->tmp;
@@ -277,23 +277,23 @@ void	del_person(person* p)
 
 void	push(list*& head, person* element)
 {
-	list* tmp  = new list;
+	list* tmp = new list;
 
-	tmp->val   = element;
-	tmp->prev  = nullptr;
-	tmp->next  = head;
+	tmp->val = element;
+	tmp->prev = nullptr;
+	tmp->next = head;
 	if (head)  head->prev = tmp;
-	head       = tmp;
+	head = tmp;
 }
 
 void	pop(list*& head, person* element)
 {
 	list* temp = head;
 
-	while (!equal_dates(temp->val->date,element->date) ||
-		   !equal(temp->val->first_name , element->first_name ) ||
-		   !equal(temp->val->second_name, element->second_name) ||
-		   temp->val->sign != element->sign)
+	while (!equal_dates(temp->val->date, element->date) ||
+		!equal(temp->val->first_name, element->first_name) ||
+		!equal(temp->val->second_name, element->second_name) ||
+		temp->val->sign != element->sign)
 		temp = temp->next;
 
 	if (temp->prev == nullptr && temp->next == nullptr)
@@ -339,7 +339,7 @@ void	print(OBJECT*& obj)
 	int num;
 	int dx;
 
-	while (cur && cnt<22)
+	while (cur && cnt < 22)
 	{
 		cnt++;
 		dx = (3 + SIZE - size(cur)) * 120;
@@ -348,10 +348,10 @@ void	print(OBJECT*& obj)
 
 		obj->buff[dx + 4].Char.UnicodeChar = char((num % 10) + '0');
 		obj->buff[dx + 3].Char.UnicodeChar = num / 10 ? char((num / 10 % 10) + '0') : ' ';
-		obj->buff[dx + 2].Char.UnicodeChar = num / 100 ? char((num / 100) + '0')    : ' ';
+		obj->buff[dx + 2].Char.UnicodeChar = num / 100 ? char((num / 100) + '0') : ' ';
 
 		for (int i = 0; cur->val->second_name[i]; i++)
-			obj->buff[dx +  9 + i].Char.UnicodeChar = cur->val->second_name[i] - 'а' + 0x0430;
+			obj->buff[dx + 9 + i].Char.UnicodeChar = cur->val->second_name[i] - 'а' + 0x0430;
 
 		for (int i = 0; cur->val->first_name[i]; i++)
 			obj->buff[dx + 41 + i].Char.UnicodeChar = cur->val->first_name[i] - 'а' + 0x0430;
@@ -363,14 +363,14 @@ void	print(OBJECT*& obj)
 		{
 			char val;
 			if (i == 2 || i == 5) val = '.';
-			else if (i == 0) val = cur->val->date[0] / 10       + '0';
-			else if (i == 1) val = cur->val->date[0] % 10       + '0';
-			else if (i == 3) val = cur->val->date[1] / 10       + '0';
-			else if (i == 4) val = cur->val->date[1] % 10       + '0';
-			else if (i == 6) val = cur->val->date[2] / 1000     + '0';
+			else if (i == 0) val = cur->val->date[0] / 10 + '0';
+			else if (i == 1) val = cur->val->date[0] % 10 + '0';
+			else if (i == 3) val = cur->val->date[1] / 10 + '0';
+			else if (i == 4) val = cur->val->date[1] % 10 + '0';
+			else if (i == 6) val = cur->val->date[2] / 1000 + '0';
 			else if (i == 7) val = cur->val->date[2] / 100 % 10 + '0';
-			else if (i == 8) val = cur->val->date[2] / 10 % 10  + '0';
-			else if (i == 9) val = cur->val->date[2] % 10       + '0';
+			else if (i == 8) val = cur->val->date[2] / 10 % 10 + '0';
+			else if (i == 9) val = cur->val->date[2] % 10 + '0';
 
 			obj->buff[dx + 87 + i].Char.UnicodeChar = val;
 		}
@@ -396,7 +396,7 @@ void	print(OBJECT*& obj)
 		dx = 120 * (13 + i) + 114;
 		obj->buff[dx + 2].Char.UnicodeChar = char((num % 10) + '0');
 		obj->buff[dx + 1].Char.UnicodeChar = num / 10 ? char((num / 10 % 10) + '0') : ' ';
-		obj->buff[dx    ].Char.UnicodeChar = num / 100 ? char((num / 100) + '0') : ' ';
+		obj->buff[dx].Char.UnicodeChar = num / 100 ? char((num / 100) + '0') : ' ';
 	}
 	num = sum;
 	dx = 120 * 12 + 114;
@@ -412,7 +412,7 @@ void	print(OBJECT*& obj)
 
 	if (obj->state == State::MENU)
 	{
-		dx = (3+obj->menu_cursor.val) * 120 + 101 ;
+		dx = (3 + obj->menu_cursor.val) * 120 + 101;
 
 		for (int i = 0; i < 17; i++)
 			obj->buff[dx + i].Attributes = 32 + 16 + 15;
@@ -436,13 +436,13 @@ void	print(OBJECT*& obj)
 				obj->buff[dx + j * 120 + obj->box.size_x - 1].Char.UnicodeChar = box_borders[1][0];
 			}
 			obj->buff[dx + i].Char.UnicodeChar = box_borders[0][1];
-			obj->buff[dx + i + 120*(obj->box.size_y-1)].Char.UnicodeChar = box_borders[0][1];
+			obj->buff[dx + i + 120 * (obj->box.size_y - 1)].Char.UnicodeChar = box_borders[0][1];
 		}
 
 		obj->buff[dx].Char.UnicodeChar = box_borders[0][0];
 		obj->buff[dx + obj->box.size_x - 1].Char.UnicodeChar = box_borders[0][2];
 		obj->buff[dx + (obj->box.size_y - 1) * 120].Char.UnicodeChar = box_borders[2][0];
-		obj->buff[dx + obj->box.size_x - 1 + (obj->box.size_y - 1) * 120].Char.UnicodeChar 
+		obj->buff[dx + obj->box.size_x - 1 + (obj->box.size_y - 1) * 120].Char.UnicodeChar
 			= box_borders[2][2];
 
 		// заголовок
@@ -457,8 +457,8 @@ void	print(OBJECT*& obj)
 
 		for (int i = 0; i < obj->box.vert_size; i++)
 		{
-			for (int j=0;obj->box.vert_fields[i][j];j++)
-				obj->buff[dx+i*120+j].Char.UnicodeChar = obj->box.vert_fields[i][j];
+			for (int j = 0; obj->box.vert_fields[i][j]; j++)
+				obj->buff[dx + i * 120 + j].Char.UnicodeChar = obj->box.vert_fields[i][j];
 
 			if (obj->box.vert_type[i] == WRITE_FIELD)
 			{
@@ -494,11 +494,11 @@ void	print(OBJECT*& obj)
 				obj->buff[dx + i].Char.UnicodeChar = obj->box.hor_fields[1][i];
 			dx -= 5 * 120 - 2 + 5 + 29;
 		}
-		
+
 		dx--;
 		if (obj->box.vert)
-		for (int i = 0; i < obj->box.size_x - 2; i++)
-			obj->buff[dx + i + 120 * obj->box.vert_cursor.val].Attributes = 16 + 15;
+			for (int i = 0; i < obj->box.size_x - 2; i++)
+				obj->buff[dx + i + 120 * obj->box.vert_cursor.val].Attributes = 16 + 15;
 		else
 		{
 			dx += 120 * 5 - 1;
@@ -571,7 +571,7 @@ void	press_button(OBJECT*& obj)
 			{
 				if (obj->found == true)
 				{
-					obj->found  = false;
+					obj->found = false;
 					obj->cursor = obj->l;
 				}
 				else
@@ -678,7 +678,7 @@ void	press_button(OBJECT*& obj)
 				obj->state = State::MENU;
 			else if (key == Key::ENTER)
 			{
-					 if (obj->box.vert_cursor.val == 0) sort_by_sign(obj->l);
+				if (obj->box.vert_cursor.val == 0) sort_by_sign(obj->l);
 				else if (obj->box.vert_cursor.val == 1) sort_by_name(obj->l);
 				else if (obj->box.vert_cursor.val == 2) sort_by_age(obj->l);
 
@@ -734,10 +734,10 @@ void	press_button(OBJECT*& obj)
 				{
 					int arr[3];
 
-					arr[0] = (obj->date[0] - '0') * 10 +    obj->date[1] - '0';
-					arr[1] = (obj->date[2] - '0') * 10 +    obj->date[3] - '0';
+					arr[0] = (obj->date[0] - '0') * 10 + obj->date[1] - '0';
+					arr[1] = (obj->date[2] - '0') * 10 + obj->date[3] - '0';
 					arr[2] = (obj->date[4] - '0') * 1000 + (obj->date[5] - '0') * 100
-						   + (obj->date[6] - '0') * 10 + obj->date[7] - '0';
+						+ (obj->date[6] - '0') * 10 + obj->date[7] - '0';
 
 					push(obj->l, make_person(obj->first_name, obj->second_name,
 						(Sign)char_to_sign(obj->sign), arr));
@@ -801,21 +801,21 @@ void	press_button(OBJECT*& obj)
 	//--------------------------------------------------------------------------------------
 }
 
-void	sort_by_sign(list*&  head)
+void	sort_by_sign(list*& head)
 {
 	sort(head, [](person* a, person* b) { return a->sign < b->sign; });
 }
 
 void	sort_by_name(list*& head)
 {
-	sort(head, [](person* a, person* b) 
+	sort(head, [](person* a, person* b)
 		{
-			return  less (a->second_name, b->second_name)
-					||
+			return  less(a->second_name, b->second_name)
+				||
 				(
 					equal(a->second_name, b->second_name) &&
-					less (a->first_name , b->first_name )
-				);
+					less(a->first_name, b->first_name)
+					);
 		}
 	);
 }
@@ -823,19 +823,19 @@ void	sort_by_name(list*& head)
 void	sort_by_age(list*& head)
 {
 	sort(head, [](person* a, person* b)
-		{ 
-			return  a->date[2] <  b->date[2]
-					||
+		{
+			return  a->date[2] < b->date[2]
+				||
 				(
 					a->date[2] == b->date[2] &&
-					a->date[1] <  b->date[1]
-				)
-					||
+					a->date[1] < b->date[1]
+					)
+				||
 				(
 					a->date[2] == b->date[2] &&
 					a->date[1] == b->date[1] &&
-					a->date[0] <  b->date[0]
-				); 
+					a->date[0] < b->date[0]
+					);
 		}
 	);
 }
@@ -866,7 +866,7 @@ void	sort(list*& head, bool (*fun)(person* a, person* b))
 
 	for (i = 0; i < SIZE; i++)
 		for (int j = 0; j < SIZE - 1; j++)
-			if ((*fun)(arr[j],arr[j + 1]))
+			if ((*fun)(arr[j], arr[j + 1]))
 			{
 				person* tmp = arr[j];
 				arr[j] = arr[j + 1];
@@ -909,14 +909,14 @@ void	save(list*& head)
 
 	for (cur = head; cur->next != nullptr; cur = cur->next);
 
-	for (; cur!=nullptr;cur = cur->prev)
+	for (; cur != nullptr; cur = cur->prev)
 	{
 		file << std::setw(30) << cur->val->second_name << ' '
-			 << std::setw(30) << cur->val->first_name  << ' '
-			 << std::setw(2)  << cur->val->sign        << ' '
-			 << std::setw(2)  << cur->val->date[0]     << ' '
-			 << std::setw(2)  << cur->val->date[1]     << ' '
-			 << std::setw(4)  << cur->val->date[2]     << '\n';
+			<< std::setw(30) << cur->val->first_name << ' '
+			<< std::setw(2) << cur->val->sign << ' '
+			<< std::setw(2) << cur->val->date[0] << ' '
+			<< std::setw(2) << cur->val->date[1] << ' '
+			<< std::setw(4) << cur->val->date[2] << '\n';
 	}
 
 	file.close();
@@ -924,9 +924,12 @@ void	save(list*& head)
 
 void	load(list*& head)
 {
+	std::ofstream temp("database.txt", std::ios_base::out);
+	temp.open("database.txt", std::ios_base::out);
+	temp.close();
 	std::ifstream file("database.txt", std::ios_base::in);
 
-	char first_name[255]  = "";
+	char first_name[255] = "";
 	char second_name[255] = "";
 	int sign;
 	int date[3];
@@ -947,11 +950,11 @@ void	load(list*& head)
 
 void	check_memory_miss()
 {
-	_CrtSetReportMode(_CRT_WARN  , _CRTDBG_MODE_FILE  );
-	_CrtSetReportFile(_CRT_WARN  , _CRTDBG_FILE_STDOUT);
-	_CrtSetReportMode(_CRT_ERROR , _CRTDBG_MODE_FILE  );
-	_CrtSetReportFile(_CRT_ERROR , _CRTDBG_FILE_STDOUT);
-	_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE  );
+	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDOUT);
+	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_ERROR, _CRTDBG_FILE_STDOUT);
+	_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
 	_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDOUT);
 	_CrtDumpMemoryLeaks();
 }
@@ -973,7 +976,7 @@ void	zero_string(char* str)
 	for (int i = 0; i < 255; i++) str[i] = 0;
 }
 
-char*	gen_name(int size)
+char* gen_name(int size)
 {
 	char* name = new char[255];
 
@@ -1001,25 +1004,25 @@ int		size(wchar_t* str)
 
 int		char_to_sign(char* str)
 {
-		 if (equal(str, (char*)"Овен")    )		return 0;
-	else if (equal(str, (char*)"Телец")   )		return 1;
+	if (equal(str, (char*)"Овен"))		return 0;
+	else if (equal(str, (char*)"Телец"))		return 1;
 	else if (equal(str, (char*)"Близнецы"))		return 2;
-	else if (equal(str, (char*)"Рак")     )		return 3;
-	else if (equal(str, (char*)"Лев")     )		return 4;
-	else if (equal(str, (char*)"Дева")    )		return 5;
-	else if (equal(str, (char*)"Весы")    )		return 6;
+	else if (equal(str, (char*)"Рак"))		return 3;
+	else if (equal(str, (char*)"Лев"))		return 4;
+	else if (equal(str, (char*)"Дева"))		return 5;
+	else if (equal(str, (char*)"Весы"))		return 6;
 	else if (equal(str, (char*)"Скорпион"))		return 7;
-	else if (equal(str, (char*)"Стрелец") )		return 8;
-	else if (equal(str, (char*)"Козерог") )		return 9;
-	else if (equal(str, (char*)"Водолей") )		return 10;
-	else if (equal(str, (char*)"Рыба")    )		return 11;
+	else if (equal(str, (char*)"Стрелец"))		return 8;
+	else if (equal(str, (char*)"Козерог"))		return 9;
+	else if (equal(str, (char*)"Водолей"))		return 10;
+	else if (equal(str, (char*)"Рыба"))		return 11;
 	else										return 999;
 }
 
-int*	char_to_date(char* str)
+int* char_to_date(char* str)
 {
-	int d_0 = (str[0] - '0') * 10   +  str[1] - '0';
-	int d_1 = (str[2] - '0') * 10   +  str[3] - '0';
+	int d_0 = (str[0] - '0') * 10 + str[1] - '0';
+	int d_1 = (str[2] - '0') * 10 + str[3] - '0';
 	int d_2 = (str[4] - '0') * 1000 + (str[5] - '0') * 100 + (str[6] - '0') * 10 + str[7] - '0';
 
 	int arr[3] = { d_0, d_1, d_2 };
@@ -1030,7 +1033,7 @@ int*	char_to_date(char* str)
 bool	empty(list*& head)
 {
 	return head->val == nullptr;
-} 
+}
 
 bool	less(char* a, char* b)
 {
@@ -1038,7 +1041,7 @@ bool	less(char* a, char* b)
 
 	while (a[i] || b[i])
 	{
-			 if (a[i] < b[i]) return true;
+		if (a[i] < b[i]) return true;
 		else if (a[i] > b[i]) return false;
 		i++;
 	}

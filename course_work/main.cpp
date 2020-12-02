@@ -4,7 +4,6 @@ using namespace std;
 
 int main()
 {
-	system("chcp 1251");
 	OBJECT* obj = nullptr;
 	start_setings(obj);
 	
