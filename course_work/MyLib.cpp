@@ -742,6 +742,8 @@ void	press_button(OBJECT*& obj)
 					push(obj->l, make_person(obj->first_name, obj->second_name,
 						(Sign)char_to_sign(obj->sign), arr));
 
+					obj->statistic[char_to_sign(obj->sign)]++;
+
 					obj->cursor = obj->l;
 					obj->list_cursor.val = 0;
 
