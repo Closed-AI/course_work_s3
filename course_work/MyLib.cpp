@@ -926,10 +926,18 @@ void	save(list*& head)
 
 void	load(list*& head)
 {
-	std::ofstream temp("database.txt", std::ios_base::out);
-	temp.open("database.txt", std::ios_base::out);
-	temp.close();
 	std::ifstream file("database.txt", std::ios_base::in);
+
+	if (!file.is_open())
+	{
+		file.close();
+
+		std::ofstream temp("database.txt", std::ios_base::out);
+		temp.open("database.txt", std::ios_base::out);
+		temp.close();
+
+		file.open("database.txt", std::ios_base::in);
+	}
 
 	char first_name[255] = "";
 	char second_name[255] = "";
