@@ -123,7 +123,7 @@ person* make_person(char* other_first_name, char* other_second_name, Sign other_
 {
 	person* tmp = new person;
 
-	init_str(tmp->first_name,  other_first_name );
+	init_str(tmp->first_name, other_first_name);
 	init_str(tmp->second_name, other_second_name);
 
 	tmp->sign = other_sign;
@@ -135,21 +135,21 @@ person* make_person(char* other_first_name, char* other_second_name, Sign other_
 	return tmp;
 }
 
-list**	find(list*& head, person* element)
+list** find(list*& head, person* element)
 {
 	if (!head)				  return nullptr;
 	if (head->val != element) return find(head->next, element);
 	return &head;
 }
 
-list**	find_by_sign(list*& head, Sign sign)
+list** find_by_sign(list*& head, Sign sign)
 {
 	if (!head)					 return nullptr;
 	if (head->val->sign != sign) return find_by_sign(head->next, sign);
 	return &head;
 }
 
-list**	find_by_name(list*& head, char* person_first_name, char* person_second_name)
+list** find_by_name(list*& head, char* person_first_name, char* person_second_name)
 {
 	if (!head) return nullptr;
 	if (head->val->first_name != person_first_name &&
@@ -387,14 +387,14 @@ void	print(OBJECT*& obj)
 		for (int i = 0; i < 10; i++)
 		{
 			char val;
-				 if (i == 2 || i == 5) val = '.';
+			if (i == 2 || i == 5) val = '.';
 			else if (i == 0) val = cur->val->date[0] / 10       + '0';
 			else if (i == 1) val = cur->val->date[0] % 10       + '0';
 			else if (i == 3) val = cur->val->date[1] / 10       + '0';
 			else if (i == 4) val = cur->val->date[1] % 10       + '0';
 			else if (i == 6) val = cur->val->date[2] / 1000     + '0';
 			else if (i == 7) val = cur->val->date[2] / 100 % 10 + '0';
-			else if (i == 8) val = cur->val->date[2] / 10  % 10 + '0';
+			else if (i == 8) val = cur->val->date[2] / 10 % 10  + '0';
 			else if (i == 9) val = cur->val->date[2] % 10       + '0';
 
 			obj->buff[dx + 87 + i].Char.UnicodeChar = val;
@@ -609,7 +609,7 @@ void	press_button(OBJECT*& obj)
 			}
 			else if (obj->menu_cursor.val == 0) // добавить
 			{
-				obj->note = {L"Заполните все необходимые поля",32+16+1};
+				obj->note = { L"Заполните все необходимые поля",32 + 16 + 1 };
 
 				wchar_t* vert_fields[4] =
 				{
@@ -647,25 +647,25 @@ void	press_button(OBJECT*& obj)
 			}
 			else if (obj->menu_cursor.val == 2) // искать
 			{
-					obj->note = { L"Заполните хотябы одно поле",32 + 16 + 1 };
+				obj->note = { L"Заполните хотябы одно поле",32 + 16 + 1 };
 
-					wchar_t* vert_fields[4] =
-					{
-						(wchar_t*)L"Имя",(wchar_t*)L"Фамилия",
-						(wchar_t*)L"Знак зодиака",(wchar_t*)L"Дата рождения"
-					};
-					BUTTON_TYPE  vert_types[4] = { WRITE_FIELD,WRITE_FIELD,WRITE_FIELD,WRITE_FIELD };
+				wchar_t* vert_fields[4] =
+				{
+					(wchar_t*)L"Имя",(wchar_t*)L"Фамилия",
+					(wchar_t*)L"Знак зодиака",(wchar_t*)L"Дата рождения"
+				};
+				BUTTON_TYPE  vert_types[4] = { WRITE_FIELD,WRITE_FIELD,WRITE_FIELD,WRITE_FIELD };
 
-					wchar_t* hor_fields[2] =
-					{
-						(wchar_t*)L"Применить",(wchar_t*)L"Отменить"
-					};
-					BUTTON_TYPE  hor_types[2] = { BUTTON,BUTTON };
+				wchar_t* hor_fields[2] =
+				{
+					(wchar_t*)L"Применить",(wchar_t*)L"Отменить"
+				};
+				BUTTON_TYPE  hor_types[2] = { BUTTON,BUTTON };
 
-					obj->box = create_box(BOX_TYPE::FINDER, (wchar_t*)L"Искать", vert_fields, hor_fields,
-						vert_types, hor_types, 4, 2, { 0,0,3 }, { 0,0,1 }, true, 48, 8);
-					obj->state = State::BOX_STATE;
-					zero_person(obj);
+				obj->box = create_box(BOX_TYPE::FINDER, (wchar_t*)L"Искать", vert_fields, hor_fields,
+					vert_types, hor_types, 4, 2, { 0,0,3 }, { 0,0,1 }, true, 48, 8);
+				obj->state = State::BOX_STATE;
+				zero_person(obj);
 			}
 			else if (obj->menu_cursor.val == 3) // сохранить
 			{
@@ -708,8 +708,8 @@ void	press_button(OBJECT*& obj)
 	{
 		if (key == Key::UP_ARROW)
 		{
-			bool (*fun)(list* l, list* cur, CURSOR curs) = 
-				[](list* l,list* cur,CURSOR curs) {return cur != l ||
+			bool (*fun)(list * l, list * cur, CURSOR curs) =
+				[](list* l, list* cur, CURSOR curs) {return cur != l ||
 				(cur == l && curs.val > curs.min_val); };
 
 			if (fun(obj->l, obj->cursor, obj->list_cursor) && !obj->found ||
@@ -761,23 +761,23 @@ void	press_button(OBJECT*& obj)
 
 			for (int i = 0; i < 255; i++)
 			{
-				obj->first_name [i] = obj->changer->val->first_name [i];
+				obj->first_name[i] = obj->changer->val->first_name[i];
 				obj->second_name[i] = obj->changer->val->second_name[i];
 			}
 
 			for (int i = 0; sign_ch[obj->changer->val->sign][i] != wchar_t('\0'); i++)
 				obj->sign[i] = sign_ch[obj->changer->val->sign][i];
-			
+
 			obj->date[0] = obj->changer->val->date[0] / 10 + '0';
-			obj->date[1] = obj->changer->val->date[0] % 10 + '0';	
+			obj->date[1] = obj->changer->val->date[0] % 10 + '0';
 			obj->date[2] = obj->changer->val->date[1] / 10 + '0';
 			obj->date[3] = obj->changer->val->date[1] % 10 + '0';
-			obj->date[4] = obj->changer->val->date[2] / 1000     + '0';
+			obj->date[4] = obj->changer->val->date[2] / 1000 + '0';
 			obj->date[5] = obj->changer->val->date[2] / 100 % 10 + '0';
-			obj->date[6] = obj->changer->val->date[2] / 10 % 10  + '0';
-			obj->date[7] = obj->changer->val->date[2] % 10       + '0';
+			obj->date[6] = obj->changer->val->date[2] / 10 % 10 + '0';
+			obj->date[7] = obj->changer->val->date[2] % 10 + '0';
 
-			obj->first_name_pos  = size(obj->changer->val->first_name );
+			obj->first_name_pos = size(obj->changer->val->first_name);
 			obj->second_name_pos = size(obj->changer->val->second_name);
 			obj->sign_pos = size(obj->sign);
 			obj->date_pos = 8;
@@ -826,12 +826,13 @@ void	press_button(OBJECT*& obj)
 					obj->box.vert_cursor.val++;
 				else obj->box.vert = false;;
 			}
-			else if (key == Key::LEFT_ARROW  && obj->box.hor_cursor.val > obj->box.hor_cursor.min_val)
+			else if (key == Key::LEFT_ARROW && obj->box.hor_cursor.val > obj->box.hor_cursor.min_val)
 				obj->box.hor_cursor.val--;
 			else if (key == Key::RIGHT_ARROW && obj->box.hor_cursor.val < obj->box.hor_cursor.max_val)
 				obj->box.hor_cursor.val++;
 			else if (flag)
-			{}
+			{
+			}
 			else if (key == Key::ESCAPE)
 				obj->state = State::MENU;
 			else if (key == Key::ENTER && !obj->box.vert)
@@ -892,10 +893,10 @@ void	press_button(OBJECT*& obj)
 					{
 						int arr[3];
 
-						arr[0] = (obj->date[0] - '0') * 10   +  obj->date[1] - '0';
-						arr[1] = (obj->date[2] - '0') * 10   +  obj->date[3] - '0';
+						arr[0] = (obj->date[0] - '0') * 10 + obj->date[1] - '0';
+						arr[1] = (obj->date[2] - '0') * 10 + obj->date[3] - '0';
 						arr[2] = (obj->date[4] - '0') * 1000 + (obj->date[5] - '0') * 100
-							   + (obj->date[6] - '0') * 10   +  obj->date[7] - '0';
+							+ (obj->date[6] - '0') * 10 + obj->date[7] - '0';
 
 						push(obj->l, make_person(obj->first_name, obj->second_name,
 							(Sign)char_to_sign(obj->sign), arr));
@@ -904,6 +905,7 @@ void	press_button(OBJECT*& obj)
 
 						obj->cursor = obj->l;
 						obj->list_cursor.val = 0;
+						obj->list_cursor.max_val = min(22, obj->list_cursor.max_val + 1);
 
 						obj->saved = false;
 						obj->state = State::MENU;
@@ -928,14 +930,14 @@ void	press_button(OBJECT*& obj)
 					{
 						int arr[3];
 
-						arr[0] = (obj->date[0] - '0') * 10   +  obj->date[1] - '0';
-						arr[1] = (obj->date[2] - '0') * 10   +  obj->date[3] - '0';
+						arr[0] = (obj->date[0] - '0') * 10 + obj->date[1] - '0';
+						arr[1] = (obj->date[2] - '0') * 10 + obj->date[3] - '0';
 						arr[2] = (obj->date[4] - '0') * 1000 + (obj->date[5] - '0') * 100
-							   + (obj->date[6] - '0') * 10 + obj->date[7] - '0';
+							+ (obj->date[6] - '0') * 10 + obj->date[7] - '0';
 
 						for (int i = 0; i < 255; i++)
 						{
-							obj->changer->val->first_name[i]  = obj->first_name[i];
+							obj->changer->val->first_name[i] = obj->first_name[i];
 							obj->changer->val->second_name[i] = obj->second_name[i];
 						}
 
@@ -946,9 +948,9 @@ void	press_button(OBJECT*& obj)
 
 						obj->statistic[char_to_sign(obj->sign)]++;
 
-						obj->saved   = false;
+						obj->saved = false;
 						obj->changer = nullptr;
-						obj->state   = State::LIST;
+						obj->state = State::LIST;
 					}
 				}
 			}
@@ -982,7 +984,7 @@ void	press_button(OBJECT*& obj)
 						obj->date_pos++;
 					}
 					else if (in_range(key, (char*)
-"йцукенгшщзхъэждлорпавыфячсмитьбюЙЦУКЕНГШЩЗХЪЭЖДЛОРПАВЫФЯЧСМИТЬБЮqwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"))
+						"йцукенгшщзхъэждлорпавыфячсмитьбюЙЦУКЕНГШЩЗХЪЭЖДЛОРПАВЫФЯЧСМИТЬБЮqwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"))
 					{
 						if (obj->box.vert_cursor.val == 0 && obj->first_name_pos < 27)
 						{
@@ -1018,7 +1020,7 @@ void	sort_by_name(list*& head)
 				(
 					equal(a->second_name, b->second_name) &&
 					less(a->first_name, b->first_name)
-					);
+				);
 		}
 	);
 }
@@ -1032,13 +1034,13 @@ void	sort_by_age(list*& head)
 				(
 					a->date[2] == b->date[2] &&
 					a->date[1] < b->date[1]
-					)
+				)
 				||
 				(
 					a->date[2] == b->date[2] &&
 					a->date[1] == b->date[1] &&
 					a->date[0] < b->date[0]
-					);
+				);
 		}
 	);
 }
@@ -1115,11 +1117,11 @@ void	save(list*& head)
 	for (; cur != nullptr; cur = cur->prev)
 	{
 		file << std::setw(30) << cur->val->second_name << ' '
-			 << std::setw(30) << cur->val->first_name << ' '
-			 << std::setw(2) << cur->val->sign << ' '
-			 << std::setw(2) << cur->val->date[0] << ' '
-			 << std::setw(2) << cur->val->date[1] << ' '
-			 << std::setw(4) << cur->val->date[2] << '\n';
+			<< std::setw(30) << cur->val->first_name << ' '
+			<< std::setw(2) << cur->val->sign << ' '
+			<< std::setw(2) << cur->val->date[0] << ' '
+			<< std::setw(2) << cur->val->date[1] << ' '
+			<< std::setw(4) << cur->val->date[2] << '\n';
 	}
 
 	file.close();
@@ -1187,7 +1189,7 @@ void	zero_string(char* str)
 	for (int i = 0; i < 255; i++) str[i] = 0;
 }
 
-char*	gen_name(int size)
+char* gen_name(int size)
 {
 	char* name = new char[255];
 
@@ -1198,7 +1200,7 @@ char*	gen_name(int size)
 	return name;
 }
 
-char*	gen_sign(int sign)
+char* gen_sign(int sign)
 {
 	if (sign == 0) return (char*)"Овен";
 	if (sign == 0) return (char*)"Телец";
@@ -1240,22 +1242,22 @@ int		size(char* str)
 
 int		char_to_sign(char* str)
 {
-		 if (equal(str, (char*)"Овен")     || equal(str, (char*)"овен")    )	return 0;
-	else if (equal(str, (char*)"Телец")    || equal(str, (char*)"телец")   )	return 1;
+	if (equal(str, (char*)"Овен") || equal(str, (char*)"овен"))	return 0;
+	else if (equal(str, (char*)"Телец") || equal(str, (char*)"телец"))	return 1;
 	else if (equal(str, (char*)"Близнецы") || equal(str, (char*)"близнецы"))	return 2;
-	else if (equal(str, (char*)"Рак")      || equal(str, (char*)"рак")     )	return 3;
-	else if (equal(str, (char*)"Лев")      || equal(str, (char*)"лев")     )	return 4;
-	else if (equal(str, (char*)"Дева")     || equal(str, (char*)"дева")    )	return 5;
-	else if (equal(str, (char*)"Весы")     || equal(str, (char*)"весы")    )	return 6;
+	else if (equal(str, (char*)"Рак") || equal(str, (char*)"рак"))	return 3;
+	else if (equal(str, (char*)"Лев") || equal(str, (char*)"лев"))	return 4;
+	else if (equal(str, (char*)"Дева") || equal(str, (char*)"дева"))	return 5;
+	else if (equal(str, (char*)"Весы") || equal(str, (char*)"весы"))	return 6;
 	else if (equal(str, (char*)"Скорпион") || equal(str, (char*)"скорпион"))	return 7;
-	else if (equal(str, (char*)"Стрелец")  || equal(str, (char*)"стрелец") )	return 8;
-	else if (equal(str, (char*)"Козерог")  || equal(str, (char*)"козерог") )	return 9;
-	else if (equal(str, (char*)"Водолей")  || equal(str, (char*)"водолей") )	return 10;
-	else if (equal(str, (char*)"Рыба")     || equal(str, (char*)"рыба")    )	return 11;
+	else if (equal(str, (char*)"Стрелец") || equal(str, (char*)"стрелец"))	return 8;
+	else if (equal(str, (char*)"Козерог") || equal(str, (char*)"козерог"))	return 9;
+	else if (equal(str, (char*)"Водолей") || equal(str, (char*)"водолей"))	return 10;
+	else if (equal(str, (char*)"Рыба") || equal(str, (char*)"рыба"))	return 11;
 	else																		return 999;
 }
 
-int*	char_to_date(char* str)
+int* char_to_date(char* str)
 {
 	int d_0 = (str[0] - '0') * 10 + str[1] - '0';
 	int d_1 = (str[2] - '0') * 10 + str[3] - '0';

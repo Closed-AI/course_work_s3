@@ -128,19 +128,19 @@ struct OBJECT
 	CURSOR		list_cursor;
 	CURSOR		menu_cursor;
 
-	BOX		box;
-	NOTE	note;
+	BOX			box;
+	NOTE		note;
 
 	//--для поиска/добавления--
-	char first_name[255];
-	char second_name[255];
-	char sign[255];
-	char date[255];
+	char		first_name[255];
+	char		second_name[255];
+	char		sign[255];
+	char		date[255];
 	
-	int first_name_pos;
-	int second_name_pos;
-	int sign_pos;
-	int date_pos;
+	int			first_name_pos;
+	int			second_name_pos;
+	int			sign_pos;
+	int			date_pos;
 	//-------------------------
 
 	HANDLE		handle;
@@ -154,15 +154,19 @@ struct OBJECT
 	int			statistic[12];
 };
 
-BOX		create_box			(BOX_TYPE type, wchar_t* title, wchar_t** vert_fields, wchar_t** hor_fields,
-							 BUTTON_TYPE* vert_type, BUTTON_TYPE* hor_type, int vert_size, int hor_size,
-							 CURSOR vert_cursor, CURSOR hor_cursor, bool vert, int size_x, int size_y);
+BOX		create_box			(BOX_TYPE type, wchar_t* title, wchar_t** vert_fields,
+							 wchar_t** hor_fields, BUTTON_TYPE* vert_type,
+							 BUTTON_TYPE* hor_type, int vert_size, int hor_size,
+							 CURSOR vert_cursor, CURSOR hor_cursor, bool vert,
+							 int size_x, int size_y);
 
-person* make_person			(char* other_first_name, char* other_second_name, Sign  other_sign, int* other_date);
+person* make_person			(char* other_first_name, char* other_second_name,
+							 Sign  other_sign, int* other_date);
 
 list**	find				(list*& head, person* element);
 list**	find_by_sign		(list*& head, Sign sign);
-list**	find_by_name		(list*& head, char* person_first_name, char* person_second_name);
+list**	find_by_name		(list*& head, char* person_first_name,
+							 char* person_second_name);
 
 void	start_setings		(OBJECT*& obj);
 void	standart_buff		(OBJECT*& obj);
