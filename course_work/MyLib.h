@@ -37,17 +37,17 @@ enum Key
 
 enum Sign 
 {
-	Aries = 0  ,
-	Taurus     ,
-	Twins      ,
-	Crayfish   ,
-	Lion	   ,
-	Virgo	   ,
-	Libra	   ,
-	Scorpio	   ,
+	Aries = 0,
+	Taurus,
+	Twins,
+	Crayfish,
+	Lion,
+	Virgo,
+	Libra,
+	Scorpio,
 	Sagittarius,
-	Capricorn  ,
-	Aquarius   ,
+	Capricorn,
+	Aquarius,
 	Fish
 };
 
@@ -73,6 +73,12 @@ struct list
 	list*	prev;
 };
 
+struct NOTE
+{
+	wchar_t text[255];
+	int		color;
+};
+
 enum BUTTON_TYPE
 {
 	BUTTON,
@@ -83,7 +89,8 @@ enum BOX_TYPE
 {
 	SORTER,
 	FINDER,
-	ADDER
+	ADDER,
+	CHANGER
 };
 
 struct BOX
@@ -116,18 +123,20 @@ struct OBJECT
 	list*		l;
 	list*		tmp;
 	list*		cursor;
+	list*		changer;
 
 	CURSOR		list_cursor;
 	CURSOR		menu_cursor;
 
 	BOX		box;
+	NOTE	note;
 
 	//--для поиска/добавления--
 	char first_name[255];
 	char second_name[255];
 	char sign[255];
 	char date[255];
-
+	
 	int first_name_pos;
 	int second_name_pos;
 	int sign_pos;
@@ -177,9 +186,11 @@ void	zero_person			(OBJECT* obj);
 void	zero_string			(char* str);
 
 char*	gen_name			(int size);
+char*	gen_sign			(int sign);
 
 int		size				(list*& head);
 int		size				(wchar_t* str);
+int		size				(char* str);
 int		char_to_sign		(char* str);
 int*    char_to_date		(char* str);
 
@@ -188,3 +199,5 @@ bool	less				(char* a, char* b);
 bool	equal				(char* a, char* b);
 bool    equal_dates			(int*  a, int*  b);
 bool	in_range			(char ch, char* sumbols);
+bool	is_russion			(char ch);
+bool	correct_date		(int* date);

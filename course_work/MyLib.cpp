@@ -1,37 +1,37 @@
 ﻿#include "MyLib.h"
 
-wchar_t arr[30][120] =
+wchar_t arr[30][121] =
 {
-	L"╔═════╤═══════════════════════════════╤══════════════════════════════╤══════════════╤═══════════════╦═════════════════╗",
-	L"║  №  │            Фамилия            │              Имя             │ Знак зодиака │ Дата рождения ║      Опции      ║",
-	L"╠═════╪═══════════════════════════════╪══════════════════════════════╪══════════════╪═══════════════╬═════════════════╣",
-	L"║     │                               │                              │              │               ║ Добавить        ║",
-	L"║     │                               │                              │              │               ║ Удалить         ║",
-	L"║     │                               │                              │              │               ║ Искать          ║",
-	L"║     │                               │                              │              │               ║ Сохранить       ║",
-	L"║     │                               │                              │              │               ║ Загрузить       ║",
-	L"║     │                               │                              │              │               ║ Сортировать     ║",
-	L"║     │                               │                              │              │               ╠═════════════════╣",
-	L"║     │                               │                              │              │               ║    Информация   ║",
-	L"║     │                               │                              │              │               ╠═════════════════╣",
-	L"║     │                               │                              │              │               ║ Записей:        ║",
-	L"║     │                               │                              │              │               ║ Овен:           ║",
-	L"║     │                               │                              │              │               ║ Телец:          ║",
-	L"║     │                               │                              │              │               ║ Близнецы:       ║",
-	L"║     │                               │                              │              │               ║ Рак:            ║",
-	L"║     │                               │                              │              │               ║ Лев:            ║",
-	L"║     │                               │                              │              │               ║ Дева:           ║",
-	L"║     │                               │                              │              │               ║ Весы:           ║",
-	L"║     │                               │                              │              │               ║ Скорпион:       ║",
-	L"║     │                               │                              │              │               ║ Стрелец:        ║",
-	L"║     │                               │                              │              │               ║ Козерог:        ║",
-	L"║     │                               │                              │              │               ║ Водолей:        ║",
-	L"║     │                               │                              │              │               ║ Рыба:           ║",
-	L"╠═════╧═══════════════════════════════╧══════════════════════════════╧══════════════╧═══════════════╬═════════════════╣",
-	L"║                                                                                                   ║                 ║",
-	L"║       Стрелки - перемещение      Enter - выбрать/применить/изменить запись      Esc - выход       ║                 ║",
-	L"║                                                                                                   ║                 ║",
-	L"╚═══════════════════════════════════════════════════════════════════════════════════════════════════╩═════════════════╝"
+	L"╔═════╤═══════════════════════════════╤═══════════════════════════════╤══════════════╤═══════════════╦═════════════════╗",
+	L"║  №  │            Фамилия            │               Имя             │ Знак зодиака │ Дата рождения ║      Опции      ║",
+	L"╠═════╪═══════════════════════════════╪═══════════════════════════════╪══════════════╪═══════════════╬═════════════════╣",
+	L"║     │                               │                               │              │               ║ Добавить        ║",
+	L"║     │                               │                               │              │               ║ Удалить         ║",
+	L"║     │                               │                               │              │               ║ Искать          ║",
+	L"║     │                               │                               │              │               ║ Сохранить       ║",
+	L"║     │                               │                               │              │               ║ Загрузить       ║",
+	L"║     │                               │                               │              │               ║ Сортировать     ║",
+	L"║     │                               │                               │              │               ╠═════════════════╣",
+	L"║     │                               │                               │              │               ║    Информация   ║",
+	L"║     │                               │                               │              │               ╠═════════════════╣",
+	L"║     │                               │                               │              │               ║ Записей:        ║",
+	L"║     │                               │                               │              │               ║ Овен:           ║",
+	L"║     │                               │                               │              │               ║ Телец:          ║",
+	L"║     │                               │                               │              │               ║ Близнецы:       ║",
+	L"║     │                               │                               │              │               ║ Рак:            ║",
+	L"║     │                               │                               │              │               ║ Лев:            ║",
+	L"║     │                               │                               │              │               ║ Дева:           ║",
+	L"║     │                               │                               │              │               ║ Весы:           ║",
+	L"║     │                               │                               │              │               ║ Скорпион:       ║",
+	L"║     │                               │                               │              │               ║ Стрелец:        ║",
+	L"║     │                               │                               │              │               ║ Козерог:        ║",
+	L"║     │                               │                               │              │               ║ Водолей:        ║",
+	L"║     │                               │                               │              │               ║ Рыба:           ║",
+	L"╠═════╧═══════════════════════════════╧═══════════════════════════════╧══════════════╧═══════════════╬═════════════════╣",
+	L"║                                                                                                    ║                 ║",
+	L"║       Стрелки - перемещение      Ente r - выбрать/применить/изменить запись      Esc - выход       ║                 ║",
+	L"║                                                                                                    ║                 ║",
+	L"╚════════════════════════════════════════════════════════════════════════════════════════════════════╩═════════════════╝"
 };
 
 wchar_t sv[2][13] =
@@ -54,6 +54,22 @@ wchar_t sign[12][255] =
 	L"Козерог ",
 	L"Водолей ",
 	L"Рыбы    "
+};
+
+char sign_ch[12][255] =
+{
+	"Овен",
+	"Телец",
+	"Близнецы",
+	"Рак",
+	"Лев",
+	"Дева",
+	"Весы",
+	"Скорпион",
+	"Стрелец",
+	"Козерог",
+	"Водолей",
+	"Рыбы"
 };
 
 wchar_t box_borders[3][4] =
@@ -107,7 +123,7 @@ person* make_person(char* other_first_name, char* other_second_name, Sign other_
 {
 	person* tmp = new person;
 
-	init_str(tmp->first_name, other_first_name);
+	init_str(tmp->first_name,  other_first_name );
 	init_str(tmp->second_name, other_second_name);
 
 	tmp->sign = other_sign;
@@ -119,21 +135,21 @@ person* make_person(char* other_first_name, char* other_second_name, Sign other_
 	return tmp;
 }
 
-list** find(list*& head, person* element)
+list**	find(list*& head, person* element)
 {
 	if (!head)				  return nullptr;
 	if (head->val != element) return find(head->next, element);
 	return &head;
 }
 
-list** find_by_sign(list*& head, Sign sign)
+list**	find_by_sign(list*& head, Sign sign)
 {
 	if (!head)					 return nullptr;
 	if (head->val->sign != sign) return find_by_sign(head->next, sign);
 	return &head;
 }
 
-list** find_by_name(list*& head, char* person_first_name, char* person_second_name)
+list**	find_by_name(list*& head, char* person_first_name, char* person_second_name)
 {
 	if (!head) return nullptr;
 	if (head->val->first_name != person_first_name &&
@@ -195,8 +211,8 @@ void	standart_buff(OBJECT*& obj)
 
 	for (int i = 0; i < 12; i++)
 	{
-		obj->buff[dx + i].Char.UnicodeChar = sv[obj->saved][i];
-		obj->buff[dx + i].Attributes = val;
+		obj->buff[dx + i + 1].Char.UnicodeChar = sv[obj->saved][i];
+		obj->buff[dx + i + 1].Attributes = val;
 	}
 }
 
@@ -244,7 +260,6 @@ void	rand_fill(list*& head, int size)
 
 void	del(OBJECT*& obj)
 {
-
 	del(obj->l);
 
 	while (obj->tmp)
@@ -351,26 +366,34 @@ void	print(OBJECT*& obj)
 		obj->buff[dx + 2].Char.UnicodeChar = num / 100 ? char((num / 100) + '0') : ' ';
 
 		for (int i = 0; cur->val->second_name[i]; i++)
-			obj->buff[dx + 9 + i].Char.UnicodeChar = cur->val->second_name[i] - 'а' + 0x0430;
+		{
+			obj->buff[dx + 9 + i].Char.UnicodeChar = cur->val->second_name[i];
+			if (is_russion(cur->val->second_name[i]))
+				obj->buff[dx + 9 + i].Char.UnicodeChar += 0x0430 - 'а';
+		}
 
 		for (int i = 0; cur->val->first_name[i]; i++)
-			obj->buff[dx + 41 + i].Char.UnicodeChar = cur->val->first_name[i] - 'а' + 0x0430;
+		{
+			obj->buff[dx + 41 + i].Char.UnicodeChar = cur->val->first_name[i];
+			if (is_russion(cur->val->first_name[i]))
+				obj->buff[dx + 41 + i].Char.UnicodeChar += 0x0430 - 'а';
+		}
 
 		for (int i = 0; i < 8; i++)
-			obj->buff[dx + 72 + i].Char.UnicodeChar = sign[cur->val->sign][i];// -'a' + 0x0430;
+			obj->buff[dx + 72 + i].Char.UnicodeChar = sign[cur->val->sign][i];
 
 		for (int i = 0; i < 10; i++)
 		{
 			char val;
-			if (i == 2 || i == 5) val = '.';
-			else if (i == 0) val = cur->val->date[0] / 10 + '0';
-			else if (i == 1) val = cur->val->date[0] % 10 + '0';
-			else if (i == 3) val = cur->val->date[1] / 10 + '0';
-			else if (i == 4) val = cur->val->date[1] % 10 + '0';
-			else if (i == 6) val = cur->val->date[2] / 1000 + '0';
+				 if (i == 2 || i == 5) val = '.';
+			else if (i == 0) val = cur->val->date[0] / 10       + '0';
+			else if (i == 1) val = cur->val->date[0] % 10       + '0';
+			else if (i == 3) val = cur->val->date[1] / 10       + '0';
+			else if (i == 4) val = cur->val->date[1] % 10       + '0';
+			else if (i == 6) val = cur->val->date[2] / 1000     + '0';
 			else if (i == 7) val = cur->val->date[2] / 100 % 10 + '0';
-			else if (i == 8) val = cur->val->date[2] / 10 % 10 + '0';
-			else if (i == 9) val = cur->val->date[2] % 10 + '0';
+			else if (i == 8) val = cur->val->date[2] / 10  % 10 + '0';
+			else if (i == 9) val = cur->val->date[2] % 10       + '0';
 
 			obj->buff[dx + 87 + i].Char.UnicodeChar = val;
 		}
@@ -384,9 +407,9 @@ void	print(OBJECT*& obj)
 	{
 		wchar_t must[13] = L"Показать всё";
 		for (int i = 0; i < 17; i++)
-			obj->buff[120 * 5 + 101 + i].Attributes = 64;
+			obj->buff[120 * 5 + 102 + i].Attributes = 64;
 		for (int i = 0; i < 12; i++)
-			obj->buff[120 * 5 + 102 + i].Char.UnicodeChar = must[i];
+			obj->buff[120 * 5 + 103 + i].Char.UnicodeChar = must[i];
 	}
 
 	for (int i = 0; i < 12; i++)
@@ -394,20 +417,20 @@ void	print(OBJECT*& obj)
 		num = obj->statistic[i];
 		sum += num;
 		dx = 120 * (13 + i) + 114;
-		obj->buff[dx + 2].Char.UnicodeChar = char((num % 10) + '0');
-		obj->buff[dx + 1].Char.UnicodeChar = num / 10 ? char((num / 10 % 10) + '0') : ' ';
-		obj->buff[dx].Char.UnicodeChar = num / 100 ? char((num / 100) + '0') : ' ';
+		obj->buff[dx + 3].Char.UnicodeChar = char((num % 10) + '0');
+		obj->buff[dx + 2].Char.UnicodeChar = num / 10 ? char((num / 10 % 10) + '0') : ' ';
+		obj->buff[dx + 1].Char.UnicodeChar = num / 100 ? char((num / 100) + '0') : ' ';
 	}
 	num = sum;
 	dx = 120 * 12 + 114;
-	obj->buff[dx + 2].Char.UnicodeChar = char((num % 10) + '0');
-	obj->buff[dx + 1].Char.UnicodeChar = num / 10 ? char((num / 10 % 10) + '0') : ' ';
-	obj->buff[dx].Char.UnicodeChar = num / 100 ? char((num / 100) + '0') : ' ';
+	obj->buff[dx + 3].Char.UnicodeChar = char((num % 10) + '0');
+	obj->buff[dx + 2].Char.UnicodeChar = num / 10 ? char((num / 10 % 10) + '0') : ' ';
+	obj->buff[dx + 1].Char.UnicodeChar = num / 100 ? char((num / 100) + '0') : ' ';
 
 	// 3-rd step
 	dx = (3 + obj->list_cursor.val) * 120 + 1;
 
-	for (int i = 0; i < 99; i++)
+	for (int i = 0; i < 100; i++)
 		obj->buff[dx + i].Attributes = (obj->state == State::LIST) ? 32 + 16 + 15 : 128 + 15;
 
 	if (obj->state == State::MENU)
@@ -415,7 +438,7 @@ void	print(OBJECT*& obj)
 		dx = (3 + obj->menu_cursor.val) * 120 + 101;
 
 		for (int i = 0; i < 17; i++)
-			obj->buff[dx + i].Attributes = 32 + 16 + 15;
+			obj->buff[dx + i + 1].Attributes = 32 + 16 + 15;
 	}
 	else if (obj->state == State::BOX_STATE)
 	{
@@ -463,21 +486,33 @@ void	print(OBJECT*& obj)
 			if (obj->box.vert_type[i] == WRITE_FIELD)
 			{
 				if (i == 0) for (int j = 0; obj->first_name[j]; j++)
-					obj->buff[dx + i * 120 + 14 + j].Char.UnicodeChar = obj->first_name[j] - 'а' + 0x0430;
+				{
+					obj->buff[dx + i * 120 + 15 + j].Char.UnicodeChar = obj->first_name[j];
+					if (is_russion(obj->first_name[j]))
+						obj->buff[dx + i * 120 + 15 + j].Char.UnicodeChar += 0x0430 - 'а';
+				}
 				else if (i == 1) for (int j = 0; obj->second_name[j]; j++)
-					obj->buff[dx + i * 120 + 14 + j].Char.UnicodeChar = obj->second_name[j] - 'а' + 0x0430;
+				{
+					obj->buff[dx + i * 120 + 15 + j].Char.UnicodeChar = obj->second_name[j];
+					if (is_russion(obj->second_name[j]))
+						obj->buff[dx + i * 120 + 15 + j].Char.UnicodeChar += 0x0430 - 'а';
+				}
 				else if (i == 2) for (int j = 0; obj->sign[j]; j++)
-					obj->buff[dx + i * 120 + 14 + j].Char.UnicodeChar = obj->sign[j] - 'а' + 0x0430;
+				{
+					obj->buff[dx + i * 120 + 15 + j].Char.UnicodeChar = obj->sign[j];
+					if (is_russion(obj->sign[j]))
+						obj->buff[dx + i * 120 + 15 + j].Char.UnicodeChar += 0x0430 - 'а';
+				}
 				else if (i == 3)
 				{
-					if (obj->date[0]) obj->buff[dx + i * 120 + 14].Char.UnicodeChar = obj->date[0];
-					if (obj->date[1]) obj->buff[dx + i * 120 + 15].Char.UnicodeChar = obj->date[1];
-					if (obj->date[2]) obj->buff[dx + i * 120 + 17].Char.UnicodeChar = obj->date[2];
-					if (obj->date[3]) obj->buff[dx + i * 120 + 18].Char.UnicodeChar = obj->date[3];
-					if (obj->date[4]) obj->buff[dx + i * 120 + 20].Char.UnicodeChar = obj->date[4];
-					if (obj->date[5]) obj->buff[dx + i * 120 + 21].Char.UnicodeChar = obj->date[5];
-					if (obj->date[6]) obj->buff[dx + i * 120 + 22].Char.UnicodeChar = obj->date[6];
-					if (obj->date[7]) obj->buff[dx + i * 120 + 23].Char.UnicodeChar = obj->date[7];
+					if (obj->date[0]) obj->buff[dx + i * 120 + 15].Char.UnicodeChar = obj->date[0];
+					if (obj->date[1]) obj->buff[dx + i * 120 + 16].Char.UnicodeChar = obj->date[1];
+					if (obj->date[2]) obj->buff[dx + i * 120 + 18].Char.UnicodeChar = obj->date[2];
+					if (obj->date[3]) obj->buff[dx + i * 120 + 19].Char.UnicodeChar = obj->date[3];
+					if (obj->date[4]) obj->buff[dx + i * 120 + 21].Char.UnicodeChar = obj->date[4];
+					if (obj->date[5]) obj->buff[dx + i * 120 + 22].Char.UnicodeChar = obj->date[5];
+					if (obj->date[6]) obj->buff[dx + i * 120 + 23].Char.UnicodeChar = obj->date[6];
+					if (obj->date[7]) obj->buff[dx + i * 120 + 24].Char.UnicodeChar = obj->date[7];
 				}
 			}
 		}
@@ -508,6 +543,35 @@ void	print(OBJECT*& obj)
 			for (int i = 0; obj->box.hor_fields[obj->box.hor_cursor.val][i]; i++)
 				obj->buff[dx + i].Attributes = 16 + 15;
 		}
+
+		if (obj->box.type != BOX_TYPE::SORTER)
+		{
+			dx = 120 * 17 + 31;
+
+			for (int i = 0; i < 3; i++)
+				for (int j = 0; j < 48; j++)
+					obj->buff[dx + 120 * i + j].Char.UnicodeChar = ' ';
+
+			for (int i = 0; i < 3; i++)
+			{
+				for (int j = 0; j < 48; j++)
+				{
+					if (i == 0 || i == 2)
+						obj->buff[dx + 120 * i + j].Char.UnicodeChar = box_borders[0][1];
+					if (j == 0 || j == 47)
+						obj->buff[dx + 120 * i + j].Char.UnicodeChar = box_borders[1][0];
+					if (i == 1 && obj->note.text[j])
+						obj->buff[dx + 120 * i + j + 2].Char.UnicodeChar = obj->note.text[j];
+
+					obj->buff[dx + 120 * i + j].Attributes = obj->note.color;
+				}
+			}
+
+			obj->buff[dx].Char.UnicodeChar = box_borders[0][0];
+			obj->buff[dx + 47].Char.UnicodeChar = box_borders[0][2];
+			obj->buff[dx + 120 * 2].Char.UnicodeChar = box_borders[2][0];
+			obj->buff[dx + 120 * 2 + 47].Char.UnicodeChar = box_borders[2][2];
+		}
 	}
 
 	// print
@@ -517,8 +581,12 @@ void	print(OBJECT*& obj)
 void	press_button(OBJECT*& obj)
 {
 	int key = _getch();
+	bool flag = false;
 	if (key == 224 && _kbhit())
+	{
 		key = _getch();
+		flag = true;
+	}
 
 	//--------------------------------------------------------------------------------------
 	if (obj->state == State::MENU)
@@ -533,12 +601,14 @@ void	press_button(OBJECT*& obj)
 		{
 			if (obj->menu_cursor.val == 0) // добавить
 			{
+				obj->note = {L"Заполните все необходимые поля",32+16+1};
+
 				wchar_t* vert_fields[4] =
 				{
 					(wchar_t*)L"Имя",(wchar_t*)L"Фамилия",
 					(wchar_t*)L"Знак зодиака",(wchar_t*)L"Дата рождения"
 				};
-				BUTTON_TYPE  vert_types[4] = { WRITE_FIELD,WRITE_FIELD,WRITE_FIELD,WRITE_FIELD };
+				BUTTON_TYPE  vert_types[4] = { WRITE_FIELD, WRITE_FIELD, WRITE_FIELD, WRITE_FIELD };
 
 				wchar_t* hor_fields[2] =
 				{
@@ -576,6 +646,8 @@ void	press_button(OBJECT*& obj)
 				}
 				else
 				{
+					obj->note = { L"Заполните хотябы одно поле",32 + 16 + 1 };
+
 					wchar_t* vert_fields[4] =
 					{
 						(wchar_t*)L"Имя",(wchar_t*)L"Фамилия",
@@ -660,7 +732,53 @@ void	press_button(OBJECT*& obj)
 			obj->state = State::MENU;
 		else if (key == Key::ENTER)
 		{
-			// изменить
+			obj->changer = obj->cursor;
+			for (int i = 0; i < obj->list_cursor.val; i++) obj->changer = obj->changer->next;
+
+			obj->note = { L"Измените все необходимые поля",32 + 16 + 1 };
+
+			wchar_t* vert_fields[4] =
+			{
+				(wchar_t*)L"Имя",(wchar_t*)L"Фамилия",
+				(wchar_t*)L"Знак зодиака",(wchar_t*)L"Дата рождения"
+			};
+			BUTTON_TYPE  vert_types[4] = { WRITE_FIELD, WRITE_FIELD, WRITE_FIELD, WRITE_FIELD };
+
+			wchar_t* hor_fields[2] =
+			{
+				(wchar_t*)L"Применить",(wchar_t*)L"Отменить"
+			};
+			BUTTON_TYPE  hor_types[2] = { BUTTON,BUTTON };
+
+			obj->box = create_box(BOX_TYPE::CHANGER, (wchar_t*)L"Изменить", vert_fields, hor_fields,
+				vert_types, hor_types, 4, 2, { 0,0,3 }, { 0,0,1 }, true, 48, 8);
+			obj->state = State::BOX_STATE;
+			zero_person(obj);
+
+			for (int i = 0; i < 255; i++)
+			{
+				obj->first_name [i] = obj->changer->val->first_name [i];
+				obj->second_name[i] = obj->changer->val->second_name[i];
+			}
+
+			for (int i = 0; sign_ch[obj->changer->val->sign][i] != wchar_t('\0'); i++)
+				obj->sign[i] = sign_ch[obj->changer->val->sign][i];
+			
+			obj->date[0] = obj->changer->val->date[0] / 10 + '0';
+			obj->date[1] = obj->changer->val->date[0] % 10 + '0';	
+			obj->date[2] = obj->changer->val->date[1] / 10 + '0';
+			obj->date[3] = obj->changer->val->date[1] % 10 + '0';
+			obj->date[4] = obj->changer->val->date[2] / 1000     + '0';
+			obj->date[5] = obj->changer->val->date[2] / 100 % 10 + '0';
+			obj->date[6] = obj->changer->val->date[2] / 10 % 10  + '0';
+			obj->date[7] = obj->changer->val->date[2] % 10       + '0';
+
+			obj->first_name_pos  = size(obj->changer->val->first_name );
+			obj->second_name_pos = size(obj->changer->val->second_name);
+			obj->sign_pos = size(obj->sign);
+			obj->date_pos = 8;
+
+			obj->statistic[obj->changer->val->sign]--;
 		}
 		else if (key == Key::ESCAPE)
 			obj->state = State::END;
@@ -704,51 +822,130 @@ void	press_button(OBJECT*& obj)
 					obj->box.vert_cursor.val++;
 				else obj->box.vert = false;;
 			}
-			else if (key == Key::LEFT_ARROW && obj->box.hor_cursor.val > obj->box.hor_cursor.min_val)
+			else if (key == Key::LEFT_ARROW  && obj->box.hor_cursor.val > obj->box.hor_cursor.min_val)
 				obj->box.hor_cursor.val--;
 			else if (key == Key::RIGHT_ARROW && obj->box.hor_cursor.val < obj->box.hor_cursor.max_val)
 				obj->box.hor_cursor.val++;
+			else if (flag)
+			{}
 			else if (key == Key::ESCAPE)
 				obj->state = State::MENU;
 			else if (key == Key::ENTER && !obj->box.vert)
 			{
 				if (obj->box.hor_cursor.val == 1) obj->state = State::MENU;
-				else if (obj->box.type == BOX_TYPE::FINDER &&
-					obj->first_name_pos + obj->second_name_pos + obj->sign_pos + obj->date_pos > 0)
+				else if (obj->box.type == BOX_TYPE::FINDER)
 				{
-					for (list* i = obj->l; i != nullptr; i = i->next)
-						if ((equal(obj->first_name, i->val->first_name) || obj->first_name_pos == 0) &&
-							(equal(obj->second_name, i->val->second_name) || obj->second_name_pos == 0) &&
-							(char_to_sign(obj->sign) == i->val->sign || obj->sign_pos == 0) &&
-							(equal_dates(char_to_date(obj->date), i->val->date) || obj->date_pos == 0))
-							push(obj->tmp, i->val);
+					if (obj->first_name_pos + obj->second_name_pos + obj->sign_pos + obj->date_pos == 0)
+					{
+						obj->note = { L"Заполните хотябы одно поле",64 + 15 };
+					}
+					else if (obj->sign_pos != 0 && char_to_sign(obj->sign) == 999)
+					{
+						obj->note = { L"Знак зодиака введен некорректно",64 + 15 };
+					}
+					else if (obj->date_pos != 0 && (obj->date_pos != 8 || !correct_date(char_to_date(obj->date))))
+					{
+						obj->note = { L"Дата рождения введена некорректно",64 + 15 };
+					}
+					else
+					{
+						while (obj->tmp != nullptr)
+						{
+							list* temp = obj->tmp;
+							obj->tmp = obj->tmp->next;
+							delete temp;
+						}
 
-					obj->cursor = obj->tmp;
-					obj->list_cursor.val = 0;
-					obj->found = true;
-					obj->state = State::MENU;
+						for (list* i = obj->l; i != nullptr; i = i->next)
+							if ((equal(obj->first_name, i->val->first_name) || obj->first_name_pos == 0) &&
+								(equal(obj->second_name, i->val->second_name) || obj->second_name_pos == 0) &&
+								(char_to_sign(obj->sign) == i->val->sign || obj->sign_pos == 0) &&
+								(equal_dates(char_to_date(obj->date), i->val->date) || obj->date_pos == 0))
+								push(obj->tmp, i->val);
+
+						obj->cursor = obj->tmp;
+						obj->list_cursor.val = 0;
+						obj->found = true;
+						obj->state = State::MENU;
+					}
 				}
-				else if (obj->box.type == BOX_TYPE::ADDER && obj->first_name_pos != 0 &&
-					obj->second_name_pos != 0 && obj->sign_pos != 0 && char_to_sign(obj->sign) < 12
-					&& obj->date_pos == 8)
+				else if (obj->box.type == BOX_TYPE::ADDER)
 				{
-					int arr[3];
+					if (obj->first_name_pos == 0 || obj->second_name_pos == 0 || obj->sign_pos == 0
+						|| obj->sign_pos == 0 || obj->date_pos != 8)
+					{
+						obj->note = { L"Не все поля заполнены", 64 + 15 };
+					}
+					else if (char_to_sign(obj->sign) == 999)
+					{
+						obj->note = { L"Знак зодиака введен некорректно", 64 + 15 };
+					}
+					else if (!correct_date(char_to_date(obj->date)))
+					{
+						obj->note = { L"Дата рождения введена некорректно", 64 + 15 };
+					}
+					else
+					{
+						int arr[3];
 
-					arr[0] = (obj->date[0] - '0') * 10 + obj->date[1] - '0';
-					arr[1] = (obj->date[2] - '0') * 10 + obj->date[3] - '0';
-					arr[2] = (obj->date[4] - '0') * 1000 + (obj->date[5] - '0') * 100
-						+ (obj->date[6] - '0') * 10 + obj->date[7] - '0';
+						arr[0] = (obj->date[0] - '0') * 10   +  obj->date[1] - '0';
+						arr[1] = (obj->date[2] - '0') * 10   +  obj->date[3] - '0';
+						arr[2] = (obj->date[4] - '0') * 1000 + (obj->date[5] - '0') * 100
+							   + (obj->date[6] - '0') * 10   +  obj->date[7] - '0';
 
-					push(obj->l, make_person(obj->first_name, obj->second_name,
-						(Sign)char_to_sign(obj->sign), arr));
+						push(obj->l, make_person(obj->first_name, obj->second_name,
+							(Sign)char_to_sign(obj->sign), arr));
 
-					obj->statistic[char_to_sign(obj->sign)]++;
+						obj->statistic[char_to_sign(obj->sign)]++;
 
-					obj->cursor = obj->l;
-					obj->list_cursor.val = 0;
+						obj->cursor = obj->l;
+						obj->list_cursor.val = 0;
 
-					obj->saved = false;
-					obj->state = State::MENU;
+						obj->saved = false;
+						obj->state = State::MENU;
+					}
+				}
+				else if (obj->box.type == BOX_TYPE::CHANGER)
+				{
+					if (obj->first_name_pos == 0 || obj->second_name_pos == 0 || obj->sign_pos == 0
+						|| obj->sign_pos == 0 || obj->date_pos != 8)
+					{
+						obj->note = { L"Не все поля заполнены", 64 + 15 };
+					}
+					else if (char_to_sign(obj->sign) == 999)
+					{
+						obj->note = { L"Знак зодиака введен некорректно", 64 + 15 };
+					}
+					else if (!correct_date(char_to_date(obj->date)))
+					{
+						obj->note = { L"Дата рождения введена некорректно", 64 + 15 };
+					}
+					else
+					{
+						int arr[3];
+
+						arr[0] = (obj->date[0] - '0') * 10   +  obj->date[1] - '0';
+						arr[1] = (obj->date[2] - '0') * 10   +  obj->date[3] - '0';
+						arr[2] = (obj->date[4] - '0') * 1000 + (obj->date[5] - '0') * 100
+							   + (obj->date[6] - '0') * 10 + obj->date[7] - '0';
+
+						for (int i = 0; i < 255; i++)
+						{
+							obj->changer->val->first_name[i]  = obj->first_name[i];
+							obj->changer->val->second_name[i] = obj->second_name[i];
+						}
+
+						obj->changer->val->sign = (Sign)char_to_sign(obj->sign);
+
+						for (int i = 0; i < 3; i++)
+							obj->changer->val->date[i] = arr[i];
+
+						obj->statistic[char_to_sign(obj->sign)]++;
+
+						obj->saved   = false;
+						obj->changer = nullptr;
+						obj->state   = State::LIST;
+					}
 				}
 			}
 			else if (obj->box.vert)
@@ -781,13 +978,13 @@ void	press_button(OBJECT*& obj)
 						obj->date_pos++;
 					}
 					else if (in_range(key, (char*)
-						"йцукенгшщзхъэждлорпавыфячсмитьбюЙЦУКЕНГШЩЗХЪЭЖДЛОРПАВЫФЯЧСМИТЬБЮ"))
+"йцукенгшщзхъэждлорпавыфячсмитьбюЙЦУКЕНГШЩЗХЪЭЖДЛОРПАВЫФЯЧСМИТЬБЮqwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"))
 					{
-						if (obj->box.vert_cursor.val == 0 && obj->first_name_pos < 30)
+						if (obj->box.vert_cursor.val == 0 && obj->first_name_pos < 27)
 						{
 							obj->first_name[obj->first_name_pos] = key; obj->first_name_pos++;
 						}
-						else if (obj->box.vert_cursor.val == 1 && obj->second_name_pos < 30)
+						else if (obj->box.vert_cursor.val == 1 && obj->second_name_pos < 27)
 						{
 							obj->second_name[obj->second_name_pos] = key; obj->second_name_pos++;
 						}
@@ -914,11 +1111,11 @@ void	save(list*& head)
 	for (; cur != nullptr; cur = cur->prev)
 	{
 		file << std::setw(30) << cur->val->second_name << ' '
-			<< std::setw(30) << cur->val->first_name << ' '
-			<< std::setw(2) << cur->val->sign << ' '
-			<< std::setw(2) << cur->val->date[0] << ' '
-			<< std::setw(2) << cur->val->date[1] << ' '
-			<< std::setw(4) << cur->val->date[2] << '\n';
+			 << std::setw(30) << cur->val->first_name << ' '
+			 << std::setw(2) << cur->val->sign << ' '
+			 << std::setw(2) << cur->val->date[0] << ' '
+			 << std::setw(2) << cur->val->date[1] << ' '
+			 << std::setw(4) << cur->val->date[2] << '\n';
 	}
 
 	file.close();
@@ -986,7 +1183,7 @@ void	zero_string(char* str)
 	for (int i = 0; i < 255; i++) str[i] = 0;
 }
 
-char* gen_name(int size)
+char*	gen_name(int size)
 {
 	char* name = new char[255];
 
@@ -995,6 +1192,22 @@ char* gen_name(int size)
 	for (int i = 0; i < size; i++) name[i] = 'а' + rand() % 32;
 
 	return name;
+}
+
+char*	gen_sign(int sign)
+{
+	if (sign == 0) return (char*)"Овен";
+	if (sign == 0) return (char*)"Телец";
+	if (sign == 0) return (char*)"Близнецы";
+	if (sign == 0) return (char*)"Рак";
+	if (sign == 0) return (char*)"Лев";
+	if (sign == 0) return (char*)"Дева";
+	if (sign == 0) return (char*)"Весы";
+	if (sign == 0) return (char*)"Скорпион";
+	if (sign == 0) return (char*)"Стрелец";
+	if (sign == 0) return (char*)"Козерог";
+	if (sign == 0) return (char*)"Водолей";
+	if (sign == 0) return (char*)"Рыба";
 }
 
 int		size(list*& head)
@@ -1012,24 +1225,33 @@ int		size(wchar_t* str)
 	return ans;
 }
 
-int		char_to_sign(char* str)
+int		size(char* str)
 {
-	if (equal(str, (char*)"Овен"))		return 0;
-	else if (equal(str, (char*)"Телец"))		return 1;
-	else if (equal(str, (char*)"Близнецы"))		return 2;
-	else if (equal(str, (char*)"Рак"))		return 3;
-	else if (equal(str, (char*)"Лев"))		return 4;
-	else if (equal(str, (char*)"Дева"))		return 5;
-	else if (equal(str, (char*)"Весы"))		return 6;
-	else if (equal(str, (char*)"Скорпион"))		return 7;
-	else if (equal(str, (char*)"Стрелец"))		return 8;
-	else if (equal(str, (char*)"Козерог"))		return 9;
-	else if (equal(str, (char*)"Водолей"))		return 10;
-	else if (equal(str, (char*)"Рыба"))		return 11;
-	else										return 999;
+	int ans = 0;
+
+	while (str[ans]) ans++;
+
+	return ans;
 }
 
-int* char_to_date(char* str)
+int		char_to_sign(char* str)
+{
+		 if (equal(str, (char*)"Овен")     || equal(str, (char*)"овен")    )	return 0;
+	else if (equal(str, (char*)"Телец")    || equal(str, (char*)"телец")   )	return 1;
+	else if (equal(str, (char*)"Близнецы") || equal(str, (char*)"близнецы"))	return 2;
+	else if (equal(str, (char*)"Рак")      || equal(str, (char*)"рак")     )	return 3;
+	else if (equal(str, (char*)"Лев")      || equal(str, (char*)"лев")     )	return 4;
+	else if (equal(str, (char*)"Дева")     || equal(str, (char*)"дева")    )	return 5;
+	else if (equal(str, (char*)"Весы")     || equal(str, (char*)"весы")    )	return 6;
+	else if (equal(str, (char*)"Скорпион") || equal(str, (char*)"скорпион"))	return 7;
+	else if (equal(str, (char*)"Стрелец")  || equal(str, (char*)"стрелец") )	return 8;
+	else if (equal(str, (char*)"Козерог")  || equal(str, (char*)"козерог") )	return 9;
+	else if (equal(str, (char*)"Водолей")  || equal(str, (char*)"водолей") )	return 10;
+	else if (equal(str, (char*)"Рыба")     || equal(str, (char*)"рыба")    )	return 11;
+	else																		return 999;
+}
+
+int*	char_to_date(char* str)
 {
 	int d_0 = (str[0] - '0') * 10 + str[1] - '0';
 	int d_1 = (str[2] - '0') * 10 + str[3] - '0';
@@ -1084,4 +1306,24 @@ bool	in_range(char ch, char* sumbols)
 	for (int i = 0; sumbols[i]; i++)
 		if (ch == sumbols[i]) return true;
 	return false;
+}
+
+bool	is_russion(char ch)
+{
+	return ch >= 'а' && ch <= 'я' || ch >= 'А' && ch <= 'Я';
+}
+
+bool	correct_date(int* date)
+{
+	bool flag = true;
+
+	int month[13] = { 0,31,28,31,30,31,30,31,31,30,31,30,31 };
+
+	flag *= date[1] < 13 && date[1]>0;
+
+	if (date[2] % 4 == 0 && (date[2] % 100 != 0 || date[2] % 400 == 0)) month[2]++;
+
+	flag *= date[0] > 0 && date[0] <= month[date[1]];
+
+	return flag;
 }
