@@ -29,7 +29,7 @@ wchar_t arr[30][121] =
 	L"║     │                               │                               │              │               ║ Рыба:           ║",
 	L"╠═════╧═══════════════════════════════╧═══════════════════════════════╧══════════════╧═══════════════╬═════════════════╣",
 	L"║                                                                                                    ║                 ║",
-	L"║       Стрелки - перемещение      Ente r - выбрать/применить/изменить запись      Esc - выход       ║                 ║",
+	L"║       Стрелки - перемещение      Enter - выбрать/применить/изменить запись      Esc - выход        ║                 ║",
 	L"║                                                                                                    ║                 ║",
 	L"╚════════════════════════════════════════════════════════════════════════════════════════════════════╩═════════════════╝"
 };
@@ -349,7 +349,9 @@ void	print(OBJECT*& obj)
 	int SIZE = size(obj->cursor);
 
 	list* cur = obj->cursor;
-	int delta = size(obj->l) - size(obj->cursor);
+	int delta;
+	if (!obj->found) delta = size(obj->l) - size(obj->cursor);
+	else             delta = size(obj->tmp) - size(obj->cursor);
 	int cnt = 0;
 	int num;
 	int dx;
@@ -599,7 +601,13 @@ void	press_button(OBJECT*& obj)
 			obj->state = State::LIST;
 		else if (key == Key::ENTER)
 		{
-			if (obj->menu_cursor.val == 0) // добавить
+			if (obj->found == true)
+			{
+				obj->found = false;
+				obj->cursor = obj->l;
+				obj->list_cursor.val = 0;
+			}
+			else if (obj->menu_cursor.val == 0) // добавить
 			{
 				obj->note = {L"Заполните все необходимые поля",32+16+1};
 
@@ -639,13 +647,6 @@ void	press_button(OBJECT*& obj)
 			}
 			else if (obj->menu_cursor.val == 2) // искать
 			{
-				if (obj->found == true)
-				{
-					obj->found = false;
-					obj->cursor = obj->l;
-				}
-				else
-				{
 					obj->note = { L"Заполните хотябы одно поле",32 + 16 + 1 };
 
 					wchar_t* vert_fields[4] =
@@ -665,7 +666,6 @@ void	press_button(OBJECT*& obj)
 						vert_types, hor_types, 4, 2, { 0,0,3 }, { 0,0,1 }, true, 48, 8);
 					obj->state = State::BOX_STATE;
 					zero_person(obj);
-				}
 			}
 			else if (obj->menu_cursor.val == 3) // сохранить
 			{
@@ -708,8 +708,12 @@ void	press_button(OBJECT*& obj)
 	{
 		if (key == Key::UP_ARROW)
 		{
-			if (obj->cursor != obj->l ||
-				(obj->cursor == obj->l && obj->list_cursor.val > obj->list_cursor.min_val))
+			bool (*fun)(list* l, list* cur, CURSOR curs) = 
+				[](list* l,list* cur,CURSOR curs) {return cur != l ||
+				(cur == l && curs.val > curs.min_val); };
+
+			if (fun(obj->l, obj->cursor, obj->list_cursor) && !obj->found ||
+				fun(obj->tmp, obj->cursor, obj->list_cursor) && obj->found)
 				obj->list_cursor.val--;
 			if (obj->list_cursor.val < obj->list_cursor.min_val && obj->cursor != obj->l)
 			{
@@ -837,15 +841,15 @@ void	press_button(OBJECT*& obj)
 				{
 					if (obj->first_name_pos + obj->second_name_pos + obj->sign_pos + obj->date_pos == 0)
 					{
-						obj->note = { L"Заполните хотябы одно поле",64 + 15 };
+						obj->note = { L"Заполните хотябы одно поле", 64 + 15 };
 					}
 					else if (obj->sign_pos != 0 && char_to_sign(obj->sign) == 999)
 					{
-						obj->note = { L"Знак зодиака введен некорректно",64 + 15 };
+						obj->note = { L"Знак зодиака введен некорректно", 64 + 15 };
 					}
 					else if (obj->date_pos != 0 && (obj->date_pos != 8 || !correct_date(char_to_date(obj->date))))
 					{
-						obj->note = { L"Дата рождения введена некорректно",64 + 15 };
+						obj->note = { L"Дата рождения введена некорректно", 64 + 15 };
 					}
 					else
 					{
